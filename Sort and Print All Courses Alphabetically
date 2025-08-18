@@ -1,0 +1,23 @@
+# ABCU Computer Science Department Course Catalog 
+## Sort and Print All Courses Alphabetically
+
+//  Public funcion to print all courses in catalog alphanumerically by courseNumber (unique id)
+	void printAllCourses() const {
+		if (!root) {
+			std::cout << "No courses available.\n";
+			return;
+		}
+		printInOrder(root);										// in-order traversal
+	}
+
+// Private helper function for in-order traversal to print courses alphanumerically
+	void printInOrder(Node* node) const {
+		if (!node) return;														// Base case: nothing to print
+
+		printInOrder(node->left);												// Recursion for left subtree traversal
+
+		std::cout << node->course.courseNumber << ", "
+			<< node->course.courseTitle << "\n";								// Print out the current node's course info
+
+		printInOrder(node->right);												// Recursion for right subtree traversal
+	}
